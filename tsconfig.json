@@ -10,7 +10,7 @@
     "baseUrl": "./",
     "paths": {
       "@assets/*": ["assets/*"],
-      "@shared/*": ["src/theme/*"],
+      "@shared/*": ["src/shared/*"],
       "@features/*": ["src/features/*"]
     }
   }
