@@ -1,8 +1,8 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import { HomeRoutes } from "./routes";
+import { WatchRoutes } from "./routes";
 
-export type HomeParamsList = {
-  [HomeRoutes.HOME]: undefined;
+export type WatchParamsList = {
+  [WatchRoutes.WATCH]: undefined;
 };
 
-export type HomeStackProps = StackNavigationProp<HomeParamsList>;
+export type WatchStackProps = StackNavigationProp<WatchParamsList>;

@@ -1,3 +1,3 @@
-export enum HomeRoutes {
-  HOME = "HOME",
+export enum WatchRoutes {
+  WATCH = "WATCH_SCREEN",
 }

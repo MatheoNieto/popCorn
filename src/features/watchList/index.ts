@@ -1,1 +1,1 @@
-export { default as HomeStack } from "./navigation/Stack";
+export { default as WatchStack } from "./navigation/Stack";

@@ -1,18 +1,17 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeRoutes } from "./routes";
-import { HomeParamsList } from "./types";
-import { HomeScreen } from "../screens";
-import { HeaderBox, IconButton } from "@shared/ui/components";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { HeaderBox, Icon, IconButton } from "@shared/ui/components";
+import { WatchParamsList } from "./types";
+import { WatchRoutes } from "./routes";
+import { WatchScreen } from "../screens";
 
-const HomeStack = () => {
-  const { Navigator, Screen } = createStackNavigator<HomeParamsList>();
+const WatchStack = () => {
+  const { Navigator, Screen } = createStackNavigator<WatchParamsList>();
   return (
-    <Navigator initialRouteName={HomeRoutes.HOME}>
+    <Navigator initialRouteName={WatchRoutes.WATCH}>
       <Screen
-        name={HomeRoutes.HOME}
-        component={HomeScreen}
+        name={WatchRoutes.WATCH}
+        component={WatchScreen}
         options={{
           header: () => (
             <HeaderBox
@@ -20,11 +19,16 @@ const HomeStack = () => {
                 <IconButton
                   onPress={() => null}
                   icon={
-                    <FontAwesome6 name="chevron-left" size={24} color="black" />
+                    <Icon
+                      type="FontAwesome5"
+                      name="chevron-left"
+                      size={24}
+                      color="black"
+                    />
                   }
                 />
               }
-              title="Home"
+              title="Watch list"
             />
           ),
         }}
@@ -33,4 +37,4 @@ const HomeStack = () => {
   );
 };
 
-export default HomeStack;
+export default WatchStack;
