@@ -1,6 +1,17 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "esModuleInterop": true,
+    "target": "es5",
+    "downlevelIteration": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@shared/*": ["src/theme/*"],
+      "@features/*": ["src/features/*"]
+    }
   }
 }
