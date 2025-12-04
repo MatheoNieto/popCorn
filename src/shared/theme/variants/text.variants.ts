@@ -7,7 +7,11 @@ const textVariants = {
     letterSpacing: 0.049,
     fontSize: 14,
   },
-  titleOfHeader: {},
+  titleOfHeader: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: 600,
+  },
 };
 
 export default textVariants;

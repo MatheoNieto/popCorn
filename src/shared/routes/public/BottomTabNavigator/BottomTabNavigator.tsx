@@ -5,6 +5,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { useKeyboardVisibility } from "@shared/hooks/useKeyboardVisibility";
 import { BottomTabNavigator } from "@shared/navigators";
 import { Icon } from "@shared/ui/components";
+import { palette } from "@shared/theme";
 
 const config = {
   routes: stackRoutes,
@@ -48,9 +49,18 @@ export const StackBottomNavigatorPrivate: React.FC<Props> = ({
         const routeConfig = routes.find((r) => r.name === route.name);
         return {
           headerShown: false,
+          tabBarStyle: {
+            backgroundColor: palette.primary[900],
+            borderTopColor: palette.iconActiveBottom,
+            shadowOffset: { width: 0, height: -2 },
+            shadowOpacity: 0.6,
+            shadowRadius: 0.5,
+            elevation: 3,
+            shadowColor: palette.iconActiveBottom,
+          },
           tabBarHideOnKeyboard: true,
-          tabBarActiveTintColor: "black",
-          tabBarInactiveTintColor: "black",
+          tabBarActiveTintColor: palette.iconActiveBottom,
+          tabBarInactiveTintColor: palette.primary[100],
           tabBarIcon: ({ focused }) => {
             if (routeConfig?.icon) {
               const iconName = routeConfig.icon;
@@ -59,7 +69,9 @@ export const StackBottomNavigatorPrivate: React.FC<Props> = ({
                   type="Ionicons"
                   name={iconName}
                   size={30}
-                  color={focused ? "primary" : "black"}
+                  color={
+                    focused ? palette.iconActiveBottom : palette.primary[100]
+                  }
                 />
               );
             }

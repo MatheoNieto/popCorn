@@ -1,6 +1,7 @@
 const palette = {
   black: "#000",
   white: "#ffffff",
+  iconActiveBottom: "#0296E5",
   primary: {
     100: "#67686D",
     200: "#5F6066",

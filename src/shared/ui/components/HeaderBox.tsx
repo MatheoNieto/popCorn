@@ -6,6 +6,7 @@ import {
 } from "react-native-safe-area-context";
 import Box, { BoxProps } from "./Box";
 import Text from "./Text";
+import { palette } from "@shared/theme";
 
 export type ScreenHeaderBoxProps = BoxProps & {
   leftIcon?: React.ReactElement;
@@ -26,16 +27,15 @@ const HeaderBox = ({
   <SafeAreaInsetsContext.Consumer>
     {(insets) => (
       <SafeAreaView
-        style={[{ flex: 0, backgroundColor: "white" }, styles.shadow]}
+        style={[{ flex: 0, backgroundColor: palette.primary[900] }]}
       >
         <Box
           accessibilityRole="toolbar"
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
-          px="m"
-          mt="m"
-          backgroundColor="white"
+          px="s"
+          backgroundColor="primary900"
           {...rest}
           style={[
             styles.container,
@@ -63,16 +63,6 @@ const HeaderBox = ({
   </SafeAreaInsetsContext.Consumer>
 );
 const styles = StyleSheet.create({
-  shadow: {
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    elevation: 16,
-    shadowRadius: 10,
-    shadowColor: "rgba(47, 51, 80, 0.12)",
-    shadowOpacity: 1,
-  },
   container: {
     zIndex: 1,
   },

@@ -3,7 +3,9 @@ import {
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
 import { RouteProp, ParamListBase } from "@react-navigation/native";
+import { palette } from "@shared/theme";
 import React from "react";
+import { ViewStyle } from "react-native";
 
 type Route = {
   name: string;
@@ -36,7 +38,6 @@ export const BottomTabNavigator: React.FC<Props> = ({
   screenOptions,
   tabBar,
 }) => {
-  // Merge tabBar into screenOptions if it exists
   const mergedScreenOptions = React.useMemo(() => {
     if (tabBar) {
       if (typeof screenOptions === "function") {
@@ -45,6 +46,9 @@ export const BottomTabNavigator: React.FC<Props> = ({
           navigation: any;
         }) => ({
           ...screenOptions(props),
+          tabBarStyle: {
+            backgroundColor: palette.primary[900],
+          },
           tabBar,
         });
       }
