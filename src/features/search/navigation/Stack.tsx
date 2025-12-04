@@ -1,17 +1,17 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeRoutes } from "./routes";
-import { HomeParamsList } from "./types";
-import { HomeScreen } from "../screens";
 import { HeaderBox, Icon, IconButton } from "@shared/ui/components";
+import { SearchScreen } from "../screens";
+import { SearchParamsList } from "./types";
+import { SearchRoutes } from "./routes";
 
-const HomeStack = () => {
-  const { Navigator, Screen } = createStackNavigator<HomeParamsList>();
+const SearchStack = () => {
+  const { Navigator, Screen } = createStackNavigator<SearchParamsList>();
   return (
-    <Navigator initialRouteName={HomeRoutes.HOME}>
+    <Navigator initialRouteName={SearchRoutes.SEARCH}>
       <Screen
-        name={HomeRoutes.HOME}
-        component={HomeScreen}
+        name={SearchRoutes.SEARCH}
+        component={SearchScreen}
         options={{
           header: () => (
             <HeaderBox
@@ -28,7 +28,7 @@ const HomeStack = () => {
                   }
                 />
               }
-              title="Home"
+              title="Search"
             />
           ),
         }}
@@ -37,4 +37,4 @@ const HomeStack = () => {
   );
 };
 
-export default HomeStack;
+export default SearchStack;

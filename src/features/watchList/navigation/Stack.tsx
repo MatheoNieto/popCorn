@@ -3,7 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { HomeRoutes } from "./routes";
 import { HomeParamsList } from "./types";
 import { HomeScreen } from "../screens";
-import { HeaderBox, Icon, IconButton } from "@shared/ui/components";
+import { HeaderBox, IconButton } from "@shared/ui/components";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 const HomeStack = () => {
   const { Navigator, Screen } = createStackNavigator<HomeParamsList>();
@@ -19,12 +20,7 @@ const HomeStack = () => {
                 <IconButton
                   onPress={() => null}
                   icon={
-                    <Icon
-                      type="FontAwesome5"
-                      name="chevron-left"
-                      size={24}
-                      color="black"
-                    />
+                    <FontAwesome6 name="chevron-left" size={24} color="black" />
                   }
                 />
               }

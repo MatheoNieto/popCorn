@@ -7,13 +7,16 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@shared/services/queryClient";
 import ThemeProvider from "@shared/theme/ThemeProvider";
 import { NavigationContainer } from "@react-navigation/native";
+import { RootNavigator } from "@shared/routes/root";
 
 export const Application = () => {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ThemeProvider>
         <QueryClientProvider client={queryClient}>
-          <NavigationContainer></NavigationContainer>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
         </QueryClientProvider>
       </ThemeProvider>
     </SafeAreaProvider>
