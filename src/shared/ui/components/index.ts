@@ -15,3 +15,7 @@ export type { BaseTouchableProps } from "./BaseTouchable";
 export { default as BaseTouchable } from "./BaseTouchable";
 export type { CardProps } from "./Card";
 export { default as Card } from "./Card";
+export type { IconButtonProps } from "./IconButton";
+export { default as IconButton } from "./IconButton";
+export type { IconProps } from "./Icon";
+export { default as Icon } from "./Icon";
