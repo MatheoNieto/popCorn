@@ -1,6 +1,6 @@
-import { createTheme } from "@shopify/restyle";
-import { textVariants, cardVariants, inputVariants } from "./variants";
-import { palette } from "./constants";
+import {createTheme} from '@shopify/restyle';
+import {textVariants, cardVariants, inputVariants} from './variants';
+import {palette} from './constants';
 
 const theme = createTheme({
   colors: {
@@ -13,13 +13,15 @@ const theme = createTheme({
     primary700: palette.primary[700],
     primary800: palette.primary[800],
     primary900: palette.primary[900],
+    iconActiveBottom: palette.iconActiveBottom,
+    borderNumberTopRated: palette.iconActiveBottom,
     black: palette.black,
     white: palette.white,
     error: palette.error[500],
     placeholderTextColor: palette.black,
     selectionColor: palette.primary[100],
     input: palette.primary[600],
-    inputBorder: "transparent",
+    inputBorder: 'transparent',
     inputBorderFocused: palette.primary[100],
   },
   spacing: {
@@ -30,11 +32,11 @@ const theme = createTheme({
     m: 16,
     l: 24,
     xl: 32,
-    "2xl": 48,
-    "3xl": 64,
-    "4xl": 96,
-    "5xl": 128,
-    "6xl": 256,
+    '2xl': 48,
+    '3xl': 64,
+    '4xl': 96,
+    '5xl': 128,
+    '6xl': 256,
   },
   borderRadius: {
     unset: 0,
