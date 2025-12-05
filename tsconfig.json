@@ -11,7 +11,8 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@shared/*": ["src/shared/*"],
-      "@features/*": ["src/features/*"]
+      "@features/*": ["src/features/*"],
+      "@store/*": ["src/store/*"]
     }
   }
 }
