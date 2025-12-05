@@ -1,5 +1,3 @@
-// TODO: Remove ts-nocheck when refactoring this file
-//@ts-nocheck
 import { Theme, useAppRestyle } from "@shared/theme";
 import {
   backgroundColor,
@@ -32,14 +30,9 @@ import React, {
   useState,
 } from "react";
 import {
-  Animated,
-  Easing,
-  NativeSyntheticEvent,
   Pressable,
   StyleSheet,
   TextInput,
-  TextInputEndEditingEventData,
-  TextInputFocusEventData,
   TextInputProps,
   TextStyle,
 } from "react-native";
@@ -48,7 +41,6 @@ import useAsProp from "../hooks/useAsProp";
 import { useCombinedRefs } from "@shared/hooks/useCombinedRefs";
 import useFontStyle from "../hooks/useFontStyle";
 import Box from "./Box";
-import Text from "./Text";
 
 export type RestyleInputProps = VariantProps<Theme, "inputVariants"> &
   TypographyProps<Theme> &
@@ -74,13 +66,9 @@ export type RestyleInputProps = VariantProps<Theme, "inputVariants"> &
     label?: string | null;
     styleContent?: TextStyle;
     isRequired?: boolean;
-    suffix?: string;
   };
 
-export type InputProps = RestyleInputProps & {
-  _dark?: RestyleInputProps;
-  _light?: RestyleInputProps;
-};
+export type InputProps = RestyleInputProps;
 
 const variant = createVariant({ themeKey: "inputVariants" });
 const inputPlaceholderTextColor = createRestyleFunction({
@@ -109,7 +97,6 @@ const Input = forwardRef<InputProps, typeof TextInput>(
   (
     {
       isRequired = false,
-      suffix,
       value,
       label,
       isDisabled,
@@ -119,8 +106,7 @@ const Input = forwardRef<InputProps, typeof TextInput>(
       style,
       variant: inputVariant = undefined,
       as,
-      _dark,
-      _light,
+
       onBlur,
       onFocus,
       placeholder,
@@ -133,10 +119,6 @@ const Input = forwardRef<InputProps, typeof TextInput>(
     const BaseInputComponent = useAsProp(TextInput, as);
     const internalRef = useRef<TextInput>(null);
     const [isFocused, setIsFocused] = useState(false);
-    const labelAnimation = useMemo(
-      () => new Animated.Value(!!value || !!placeholder || isFocused ? 1 : 0),
-      [value, placeholder, isFocused],
-    );
     const refs = useCombinedRefs(internalRef, ref);
 
     let _inputVariant = useMemo(() => {
@@ -161,31 +143,19 @@ const Input = forwardRef<InputProps, typeof TextInput>(
     const isFocusable = !!editable || !isDisabled;
 
     const handleFocus = useCallback(
-      (ev: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      (ev: FocusEvent) => {
         onFocus?.(ev);
         setIsFocused(true);
-        Animated.timing(labelAnimation, {
-          toValue: 1,
-          duration: 200,
-          easing: Easing.linear,
-          useNativeDriver: false,
-        }).start();
       },
-      [onFocus, labelAnimation],
+      [onFocus],
     );
 
     const handleBlur = useCallback(
-      (ev: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      (ev: FocusEvent) => {
         onBlur?.(ev);
         setIsFocused(false);
-        Animated.timing(labelAnimation, {
-          toValue: value || placeholder ? 1 : 0,
-          duration: 200,
-          easing: Easing.linear,
-          useNativeDriver: false,
-        }).start();
       },
-      [onBlur, labelAnimation, value, placeholder],
+      [onBlur, value],
     );
 
     const handleExternalFocus = useCallback(() => {
@@ -195,84 +165,32 @@ const Input = forwardRef<InputProps, typeof TextInput>(
     }, [isFocusable]);
 
     return (
-      <Pressable
-        style={StyleSheet.flatten([
-          styles.inputContainer,
-          style,
-          containerStyle,
-        ])}
-        onPress={handleExternalFocus}
-        accessible={false}
-      >
-        <Box flexDirection="row" alignItems="center">
-          <Box flex={1}>
-            <Text
-              as={Animated.Text}
-              position="absolute"
-              style={{
-                top: labelAnimation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [18, 5],
-                }),
-                fontSize: labelAnimation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [16, 14],
-                }),
-                textTransform: "capitalize",
-              }}
-            >
-              {label}
-              {isRequired && <Text color="error">*</Text>}
-            </Text>
-
-            <BaseInputComponent
-              ref={refs}
-              style={[
-                styles.text,
-                fontStyle,
-                {
-                  paddingTop: value || placeholder || isFocused ? 20 : 0,
-                  marginTop: 0,
-                  fontWeight: value || placeholder || isFocused ? "700" : "500",
-                  paddingHorizontal: 0,
-                },
-                styleContent,
-              ]}
-              selectionColor={selectionColor}
-              editable={!isDisabled}
-              {...props}
-              value={value}
-              placeholder={placeholder}
-              onBlur={handleBlur}
-              onFocus={handleFocus}
-            />
+      <>
+        <Pressable
+          style={StyleSheet.flatten([style, containerStyle])}
+          onPress={handleExternalFocus}
+          accessible={false}
+        >
+          <Box flexDirection="row" alignItems="center" justifyContent="center">
+            <Box flex={1}>
+              <BaseInputComponent
+                ref={refs}
+                style={[fontStyle, styleContent, { color: "white" }]}
+                selectionColor={selectionColor}
+                editable={!isDisabled}
+                {...props}
+                value={value}
+                placeholder={placeholder}
+                onBlur={handleBlur}
+                onFocus={handleFocus}
+              />
+            </Box>
+            {rightIcon && <Box>{rightIcon}</Box>}
           </Box>
-          {suffix && (
-            <Box top={value || placeholder || isFocused ? 3 : 8} right={5}>
-              <Text mt={label ? "s" : "unset"}>{suffix}</Text>
-            </Box>
-          )}
-          {rightIcon && (
-            <Box top={value || placeholder || isFocused ? 7 : 12} right={5}>
-              {rightIcon}
-            </Box>
-          )}
-        </Box>
-      </Pressable>
+        </Pressable>
+      </>
     );
   },
 );
 
 export default Input;
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    width: "100%",
-    height: 60,
-  },
-  text: {
-    lineHeight: 20,
-    marginTop: 8,
-    color: "black",
-  },
-});

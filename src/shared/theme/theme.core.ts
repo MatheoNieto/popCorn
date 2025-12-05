@@ -16,6 +16,11 @@ const theme = createTheme({
     black: palette.black,
     white: palette.white,
     error: palette.error[500],
+    placeholderTextColor: palette.black,
+    selectionColor: palette.primary[100],
+    input: palette.primary[600],
+    inputBorder: "transparent",
+    inputBorderFocused: palette.primary[100],
   },
   spacing: {
     unset: 0,
