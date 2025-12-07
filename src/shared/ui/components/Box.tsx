@@ -1,14 +1,14 @@
-import { Theme, useAppRestyle } from "@shared/theme";
+import {Theme, useAppRestyle} from '@shared/theme';
 import {
   BoxProps as ShopifyRestyleBoxProps,
   boxRestyleFunctions,
   composeRestyleFunctions,
-} from "@shopify/restyle";
+} from '@shopify/restyle';
 
-import React from "react";
-import { Animated, StyleProp, View, ViewStyle } from "react-native";
-import { forwardRef } from "../utils";
-import useAsProp from "../hooks/useAsProp";
+import React from 'react';
+import {Animated, StyleProp, View, ViewStyle} from 'react-native';
+import {forwardRef} from '../utils';
+import useAsProp from '../hooks/useAsProp';
 
 type RestyleBoxProps = ShopifyRestyleBoxProps<Theme> & {
   style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
@@ -29,9 +29,9 @@ type Props = RestyleBoxProps & {
 };
 const restyleFunctions = composeRestyleFunctions(boxRestyleFunctions);
 
-const Box = forwardRef<Props, typeof View>(({ as, ...rest }, ref) => {
+const Box = forwardRef<Props, typeof View>(({as, ...rest}, ref) => {
   const BoxComponent = useAsProp(View, as);
-  const props = useAppRestyle(restyleFunctions, { ...rest });
+  const props = useAppRestyle(restyleFunctions, {...rest});
   return <BoxComponent ref={ref} {...(props as any)} />;
 });
 export type BoxProps = React.ComponentProps<typeof Box>;

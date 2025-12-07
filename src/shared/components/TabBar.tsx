@@ -1,6 +1,5 @@
-import {BaseTouchable, Box} from '@shared/ui/components';
+import {BaseTouchable, Box, Text} from '@shared/ui/components';
 import React from 'react';
-import {Animated} from 'react-native';
 import {SceneRendererProps, NavigationState} from 'react-native-tab-view';
 
 type Props = SceneRendererProps & {
@@ -8,26 +7,31 @@ type Props = SceneRendererProps & {
   onIndexChange: (index: number) => void;
 };
 
-const TabBar: React.FC<Props> = props => {
-  const inputRange = props.navigationState.routes.map((x, i) => i);
+const TabBar: React.FC<Props> = ({
+  navigationState,
+  position,
+  onIndexChange,
+  ...props
+}) => {
+  const inputRange = navigationState.routes.map((x, i) => i);
 
   return (
-    <Box backgroundColor="error" height={80}>
-      {props.navigationState.routes.map((route, i) => {
-        const opacity = props.position.interpolate({
-          inputRange,
-          outputRange: inputRange.map(inputIndex =>
-            inputIndex === i ? 1 : 0.5,
-          ),
-        });
-
+    <Box
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="space-between"
+      p="m"
+      backgroundColor="primary900">
+      {navigationState.routes.map((route, i) => {
+        const selected = navigationState.index === i;
         return (
           <BaseTouchable
+            py="s"
             key={`route.key-${Math.random()}`}
-            onPress={() => props.onIndexChange(i)}>
-            <Animated.Text style={{opacity, color: 'white'}}>
-              {route.title}
-            </Animated.Text>
+            onPress={() => onIndexChange(i)}
+            borderBottomColor="primary"
+            borderBottomWidth={selected ? 4 : 0}>
+            <Text style={{color: 'white'}}>{route.title}</Text>
           </BaseTouchable>
         );
       })}
