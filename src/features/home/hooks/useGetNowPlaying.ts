@@ -1,8 +1,8 @@
 import {useInfiniteQuery} from '@tanstack/react-query';
-import {FilterNowPlaying} from '../entities/nowPlaying';
 import {getNowPlayingService} from '../services/getNowPlaying';
+import {FilterFilms} from '../entities/film';
 
-export const useGetNowPlaying = (filters: FilterNowPlaying = {}) => {
+export const useGetNowPlaying = (filters: FilterFilms = {}) => {
   const query = useInfiniteQuery({
     queryKey: ['GET_NOW_PLAYING_FILMS', filters],
     queryFn: async ({pageParam = 1}) => {

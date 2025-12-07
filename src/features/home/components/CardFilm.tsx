@@ -1,20 +1,20 @@
-import {Box, Card, Text} from '@shared/ui/components';
+import {Box, Card} from '@shared/ui/components';
 import React from 'react';
 import {Image} from 'react-native';
 import {Film} from '../entities/film';
-import {images} from '@assets/images';
 
 type Props = {
   film: Film;
+  image?: any;
 };
 
-const CardFilm: React.FC<Props> = ({film}) => {
+const CardFilm: React.FC<Props> = ({image}) => {
   return (
     <Card variant="film">
       <Box>
         <Image
           resizeMode="cover"
-          source={images.coverFilms}
+          source={image}
           style={{
             width: '100%',
             height: '100%',

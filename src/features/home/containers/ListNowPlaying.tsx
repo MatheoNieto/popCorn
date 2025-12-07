@@ -5,14 +5,15 @@ import BaseSpinner from '@shared/ui/components/BaseSpinner';
 import {FlatList} from 'react-native';
 import {Film} from '../entities/film';
 import {CardFilm} from '../components';
+import {images} from '@assets/images';
 
 const ListNowPlayingContainer = () => {
-  const {films, isLoading, isFetchingNextPage, onLoadNextPage} =
+  const {films, isLoading, isFetchingNextPage, hasMore, onLoadNextPage} =
     useGetNowPlaying();
 
   const renderItems = React.useCallback(
     ({item}: {item: Film}) => {
-      return <CardFilm film={item} />;
+      return <CardFilm film={item} image={images.coverFilmsPlayingNow} />;
     },
     [films],
   );
@@ -37,7 +38,7 @@ const ListNowPlayingContainer = () => {
         keyExtractor={item => `now-playing-card-film${item.id}`}
         renderItem={renderItems}
         showsVerticalScrollIndicator={false}
-        onEndReached={() => onLoadNextPage()}
+        onEndReached={() => hasMore && onLoadNextPage()}
         onEndReachedThreshold={0.5}
         ListFooterComponent={() =>
           isFetchingNextPage ? <BaseSpinner /> : null

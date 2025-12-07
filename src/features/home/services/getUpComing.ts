@@ -32,7 +32,7 @@ export const getUpComingService = async (
 
     return Promise.resolve({
       films: filmsMapped,
-      hasMore: false,
+      hasMore: true,
       currentPage: 1,
       totalPages: 3,
     });

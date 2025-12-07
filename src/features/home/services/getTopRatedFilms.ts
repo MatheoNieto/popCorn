@@ -1,14 +1,14 @@
 import {endPoints} from '@shared/constants/endpoints';
 import consumerApi from '@shared/services/api';
 import {MoviesResponseApiDTO} from '../data/dto/response/topRatedFilmsResponseDTO';
-import {Film, FilterFilms} from '../entities/film';
+import {FilterFilms} from '../entities/film';
 import {TopRatedMapper} from '../data/mappers/topRatedMapper';
 import {mockFilmsResponse} from './mocks/topRateFilms';
-import {arraySorter} from '@shared/services/arraySorter';
+import {ResponseTopRated} from '../entities/topRated';
 
-export const getTopRatedFilms = async (
+export const getTopRatedFilmsService = async (
   filters: FilterFilms,
-): Promise<Film[]> => {
+): Promise<ResponseTopRated> => {
   try {
     const response = await consumerApi.get<MoviesResponseApiDTO>(
       endPoints.films.topRated,
@@ -20,16 +20,23 @@ export const getTopRatedFilms = async (
     const dataFilmsMapped = TopRatedMapper.responseToEntity(
       response.data.results,
     );
+    const canLoadMore = response.data.page < response.data.total_pages;
 
-    return Promise.resolve(
-      arraySorter.sortObjectsDesc<Film>(dataFilmsMapped, 'popularity'),
-    );
+    return Promise.resolve({
+      films: dataFilmsMapped,
+      hasMore: canLoadMore,
+      currentPage: response.data.page,
+      totalPages: response.data.total_pages,
+    });
   } catch (err) {
     const dataFilmsMapped = TopRatedMapper.responseToEntity(
       mockFilmsResponse.results,
     );
-    return Promise.resolve(
-      arraySorter.sortObjectsDesc<Film>(dataFilmsMapped, 'popularity'),
-    );
+    return Promise.resolve({
+      films: dataFilmsMapped,
+      hasMore: true,
+      currentPage: 1,
+      totalPages: 2,
+    });
   }
 };
