@@ -1,7 +1,7 @@
+import {Film} from '@shared/entities/film';
 import {Box, Card} from '@shared/ui/components';
 import React from 'react';
 import {Image} from 'react-native';
-import {Film} from '../entities/film';
 
 type Props = {
   film: Film;

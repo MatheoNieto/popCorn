@@ -6,9 +6,10 @@ import {FilterFilms} from '../entities/film';
 import {UpComingResponseApiDTO} from '../data/dto/response/upComingResponseDTO';
 import {UpComingMapper} from '../data/mappers/upComingMappert';
 
-export const getUpComingService = async (
-  filters: FilterFilms,
-): Promise<ResponseNowPlaying> => {
+export const getUpComingService = async ({
+  page = 1,
+  ...filters
+}: FilterFilms): Promise<ResponseNowPlaying> => {
   try {
     const response = await consumerApi.get<UpComingResponseApiDTO>(
       endPoints.films.upComing,
@@ -32,9 +33,9 @@ export const getUpComingService = async (
 
     return Promise.resolve({
       films: filmsMapped,
-      hasMore: true,
+      hasMore: page < 2,
       currentPage: 1,
-      totalPages: 3,
+      totalPages: 2,
     });
   }
 };

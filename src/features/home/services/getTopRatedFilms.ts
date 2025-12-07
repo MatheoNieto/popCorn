@@ -34,7 +34,7 @@ export const getTopRatedFilmsService = async (
     );
     return Promise.resolve({
       films: dataFilmsMapped,
-      hasMore: true,
+      hasMore: false,
       currentPage: 1,
       totalPages: 2,
     });

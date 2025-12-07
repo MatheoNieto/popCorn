@@ -1,7 +1,7 @@
 import {Box, Card, Text} from '@shared/ui/components';
 import React from 'react';
 import {Image} from 'react-native';
-import {Film} from '../entities/film';
+import {Film} from '@shared/entities/film';
 import {images} from '@assets/images';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   position: number;
 };
 
-const CardTopRatedFilm: React.FC<Props> = ({film, position}) => {
+const CardTopRatedFilm: React.FC<Props> = ({position}) => {
   return (
     <Card variant="topRated">
       <Box>

@@ -1,12 +1,13 @@
-import {Film} from '@features/home/entities/film';
+import {Film} from '@shared/entities/film';
 import {UpComingResponseApiDTO} from '../dto/response/upComingResponseDTO';
 
 export class UpComingMapper {
   static responseToEntity(
     dataFilms: UpComingResponseApiDTO['results'],
+    mock = false,
   ): Film[] {
     return dataFilms.map(itemFilm => ({
-      id: itemFilm.id,
+      id: mock ? itemFilm.id + Math.random() : itemFilm.id,
       original_title: itemFilm.original_title,
       genre_ids: itemFilm.genre_ids,
       overview: itemFilm.overview,

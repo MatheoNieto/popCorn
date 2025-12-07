@@ -3,9 +3,9 @@ import React from 'react';
 import {useGetNowPlaying} from '../hooks/useGetNowPlaying';
 import BaseSpinner from '@shared/ui/components/BaseSpinner';
 import {FlatList} from 'react-native';
-import {Film} from '../entities/film';
 import {CardFilm} from '../components';
 import {images} from '@assets/images';
+import {Film} from '@shared/entities/film';
 
 const ListNowPlayingContainer = () => {
   const {films, isLoading, isFetchingNextPage, hasMore, onLoadNextPage} =
@@ -37,9 +37,9 @@ const ListNowPlayingContainer = () => {
         data={films}
         keyExtractor={item => `now-playing-card-film${item.id}`}
         renderItem={renderItems}
-        showsVerticalScrollIndicator={false}
         onEndReached={() => hasMore && onLoadNextPage()}
         onEndReachedThreshold={0.5}
+        ListEmptyComponent={<Box></Box>}
         ListFooterComponent={() =>
           isFetchingNextPage ? <BaseSpinner /> : null
         }

@@ -4,7 +4,7 @@ import React from 'react';
 import {useGetTopRatedFilms} from '../hooks/useGetTopRatedFilms';
 import BaseSpinner from '@shared/ui/components/BaseSpinner';
 import {FlatList} from 'react-native';
-import {Film} from '../entities/film';
+import {Film} from '@shared/entities/film';
 import {CardTopRatedFilm} from '../components';
 
 const ListTopFilmsContainer = () => {
@@ -35,7 +35,6 @@ const ListTopFilmsContainer = () => {
           data={listTopRated ?? []}
           keyExtractor={item => `top-rated-card-film${item.id}`}
           renderItem={renderItems}
-          showsHorizontalScrollIndicator={false}
         />
       )}
     </Box>

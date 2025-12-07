@@ -3,7 +3,7 @@ import React from 'react';
 import {useGetUpComing} from '../hooks/useGetUpComing';
 import BaseSpinner from '@shared/ui/components/BaseSpinner';
 import {FlatList} from 'react-native';
-import {Film} from '../entities/film';
+import {Film} from '@shared/entities/film';
 import {CardFilm} from '../components';
 import {images} from '@assets/images';
 
@@ -35,7 +35,7 @@ const ListUpComingContainer = () => {
         }}
         numColumns={3}
         data={films}
-        keyExtractor={item => `now-playing-card-film${item.id}`}
+        keyExtractor={item => `up-coming-card-film${item.id}`}
         renderItem={renderItems}
         showsVerticalScrollIndicator={false}
         onEndReached={() => hasMore && onLoadNextPage()}

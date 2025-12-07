@@ -1,14 +1,14 @@
+import {color} from '@shopify/restyle';
 import {CustomFonts} from '../constants';
 
 const textVariants = {
   defaults: {
-    color: 'black',
+    color: 'white',
     fontFamily: CustomFonts.Primary,
     letterSpacing: 0.049,
     fontSize: 14,
   },
   titleOfHeader: {
-    color: 'white',
     fontSize: 18,
     fontWeight: 600,
   },
@@ -23,6 +23,21 @@ const textVariants = {
     textShadowColor: 'borderNumberTopRated',
     textShadowRadius: 2,
     textShadowOffset: {width: 0, height: 0},
+  },
+
+  titleEmptyList: {
+    fontFamily: CustomFonts.Secondary,
+    fontSize: 20,
+    fontWeight: 600,
+    textAlign: 'center',
+    my: 'm',
+  },
+  messageEmptyList: {
+    fontFamily: CustomFonts.Secondary,
+    fontSize: 12,
+    fontWeight: 500,
+    textAlign: 'center',
+    color: 'primary',
   },
 };
 

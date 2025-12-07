@@ -1,4 +1,4 @@
-import {Film} from '@features/home/entities/film';
+import {Film} from '@shared/entities/film';
 import {MoviesResponseApiDTO} from '../dto/response/topRatedFilmsResponseDTO';
 
 export class TopRatedMapper {

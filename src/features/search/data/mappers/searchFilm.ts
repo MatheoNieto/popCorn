@@ -1,9 +1,9 @@
 import {Film} from '@shared/entities/film';
-import {NowPlayingResponseApiDTO} from '../dto/response/nowPlayingResponseDTO';
+import {SearchFilmsResponseApiDTO} from '../dto/response/searchFilmsResponseDTO';
 
-export class NowPlayingMapper {
+export class SearchFilmMapper {
   static responseToEntity(
-    dataFilms: NowPlayingResponseApiDTO['results'],
+    dataFilms: SearchFilmsResponseApiDTO['results'],
   ): Film[] {
     return dataFilms.map(itemFilm => ({
       id: itemFilm.id,
@@ -11,7 +11,7 @@ export class NowPlayingMapper {
       genre_ids: itemFilm.genre_ids,
       overview: itemFilm.overview,
       popularity: itemFilm.popularity,
-      poster_path: itemFilm.poster_path,
+      poster_path: itemFilm.poster_path || '',
       release_date: itemFilm.release_date,
       title: itemFilm.title,
       vote_average: itemFilm.vote_average,
