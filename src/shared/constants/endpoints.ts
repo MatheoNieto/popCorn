@@ -1,3 +1,6 @@
+import {Login} from '@features/auth/entities/login';
+import {Account} from '@shared/entities/account';
+
 export const baseURL = 'https://api.themoviedb.org/3';
 
 export const endPoints = {
@@ -5,7 +8,7 @@ export const endPoints = {
     guestSession: `${baseURL}/authentication/guest_session/new`,
   },
   account: {
-    details: (sessionId: string) =>
+    details: (sessionId: Login['session_id']) =>
       `${baseURL}/account/null?session_id=${sessionId}`,
   },
   films: {
@@ -13,7 +16,7 @@ export const endPoints = {
     nowPlaying: `${baseURL}/movie/now_playing`,
     upComing: `${baseURL}/movie/upcoming`,
     topRated: `${baseURL}/movie/top_rated`,
-    watchList: (accountId: string) =>
+    watchList: (accountId: Account['id']) =>
       `${baseURL}/account/${accountId}/watchlist/movies`,
   },
 };

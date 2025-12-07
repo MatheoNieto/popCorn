@@ -1,12 +1,12 @@
-import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {HeaderBox, Icon, IconButton} from '@shared/ui/components';
-import {WatchParamsList} from './types';
-import {WatchRoutes} from './routes';
-import {WatchScreen} from '../screens';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { HeaderBox, Icon, IconButton } from "@shared/ui/components";
+import { WatchParamsList } from "./types";
+import { WatchRoutes } from "./routes";
+import { WatchScreen } from "../screens";
 
 const WatchStack = () => {
-  const {Navigator, Screen} = createStackNavigator<WatchParamsList>();
+  const { Navigator, Screen } = createStackNavigator<WatchParamsList>();
   return (
     <Navigator initialRouteName={WatchRoutes.WATCH}>
       <Screen
@@ -23,7 +23,7 @@ const WatchStack = () => {
                       type="FontAwesome5"
                       name="chevron-left"
                       size={24}
-                      color="white"
+                      color="black"
                     />
                   }
                 />

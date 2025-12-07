@@ -12,7 +12,13 @@ export const getDataSessionSelector = createSelector(
 export const isAuthenticatedSelector = createSelector([getAuthData], authData =>
   Boolean(authData.sessionId),
 );
+
 export const getAccountId = createSelector(
   [getAuthData],
   authData => authData.accountDetails?.id,
+);
+
+export const getSessionId = createSelector(
+  [getAuthData],
+  authData => authData.sessionId,
 );

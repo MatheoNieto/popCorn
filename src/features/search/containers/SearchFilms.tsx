@@ -22,7 +22,6 @@ const SearchFilmsContainer = () => {
   });
 
   React.useEffect(() => {
-    if (valueSearch.length < 3) return;
     const delay = setTimeout(() => {
       refetch();
     }, 300);
