@@ -1,34 +1,34 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { HeaderBox, Icon, IconButton } from "@shared/ui/components";
-import { WatchParamsList } from "./types";
-import { WatchRoutes } from "./routes";
-import { WatchScreen } from "../screens";
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {HeaderBox, Icon, IconButton} from '@shared/ui/components';
+import {FilmRoutes} from './routes';
+import {FilmDetailScreen} from '../screens';
+import {FilmsParamsList} from './types';
 
-const WatchStack = () => {
-  const { Navigator, Screen } = createStackNavigator<WatchParamsList>();
+const FilmsStack = () => {
+  const {Navigator, Screen} = createStackNavigator<FilmsParamsList>();
   return (
-    <Navigator initialRouteName={WatchRoutes.WATCH}>
+    <Navigator initialRouteName={FilmRoutes.FILM_DETAILS}>
       <Screen
-        name={WatchRoutes.WATCH}
-        component={WatchScreen}
+        name={FilmRoutes.FILM_DETAILS}
+        component={FilmDetailScreen}
         options={{
           header: () => (
             <HeaderBox
-              leftIcon={
+              rightIcon={
                 <IconButton
                   onPress={() => null}
                   icon={
                     <Icon
-                      type="FontAwesome5"
-                      name="chevron-left"
+                      type="Ionicons"
+                      name="bookmark"
                       size={24}
-                      color="black"
+                      color="white"
                     />
                   }
                 />
               }
-              title="Watch list"
+              title="Detail"
             />
           ),
         }}
@@ -37,4 +37,4 @@ const WatchStack = () => {
   );
 };
 
-export default WatchStack;
+export default FilmsStack;

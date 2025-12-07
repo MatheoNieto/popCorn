@@ -1,8 +1,11 @@
-import { StackNavigationProp } from "@react-navigation/stack";
-import { WatchRoutes } from "./routes";
+import {StackNavigationProp} from '@react-navigation/stack';
+import {FilmRoutes} from './routes';
+import {Film} from '@shared/entities/film';
 
-export type WatchParamsList = {
-  [WatchRoutes.WATCH]: undefined;
+export type FilmsParamsList = {
+  [FilmRoutes.FILM_DETAILS]: {
+    filmId: Film['id'];
+  };
 };
 
-export type WatchStackProps = StackNavigationProp<WatchParamsList>;
+export type FilmsStackProps = StackNavigationProp<FilmsParamsList>;

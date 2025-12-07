@@ -1,5 +1,6 @@
 import {Login} from '@features/auth/entities/login';
 import {Account} from '@shared/entities/account';
+import {Film} from '@shared/entities/film';
 
 export const baseURL = 'https://api.themoviedb.org/3';
 
@@ -13,6 +14,7 @@ export const endPoints = {
   },
   films: {
     search: `${baseURL}/search/movie`,
+    detail: (filmId: Film['id']) => `${baseURL}/movie/${filmId}`,
     nowPlaying: `${baseURL}/movie/now_playing`,
     upComing: `${baseURL}/movie/upcoming`,
     topRated: `${baseURL}/movie/top_rated`,

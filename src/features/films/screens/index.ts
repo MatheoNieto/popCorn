@@ -1,1 +1,1 @@
-export { default as WatchScreen } from "./Watch";
+export {default as FilmDetailScreen} from './FilmDetail';
