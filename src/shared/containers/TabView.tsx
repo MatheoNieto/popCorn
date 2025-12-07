@@ -28,7 +28,7 @@ const TabViewContainer: React.FC<TabViewContainerProps> & {
   const {index, routes, setIndex, renderScene} = useTabs(initialRoutes);
 
   return (
-    <Box backgroundColor="primary900" height={300}>
+    <Box backgroundColor="primary900" height={400}>
       <TabView
         navigationState={{index, routes}}
         renderScene={renderScene}

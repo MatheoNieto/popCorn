@@ -1,14 +1,13 @@
 import {endPoints} from '@shared/constants/endpoints';
 import consumerApi from '@shared/services/api';
-import {FilterTopRated} from '../entities/topRated';
 import {MoviesResponseApiDTO} from '../data/dto/response/topRatedFilmsResponseDTO';
-import {Film} from '../entities/film';
+import {Film, FilterFilms} from '../entities/film';
 import {TopRatedMapper} from '../data/mappers/topRatedMapper';
 import {mockFilmsResponse} from './mocks/topRateFilms';
 import {arraySorter} from '@shared/services/arraySorter';
 
 export const getTopRatedFilms = async (
-  filters: FilterTopRated,
+  filters: FilterFilms,
 ): Promise<Film[]> => {
   try {
     const response = await consumerApi.get<MoviesResponseApiDTO>(

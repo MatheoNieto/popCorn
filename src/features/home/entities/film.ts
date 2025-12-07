@@ -9,3 +9,17 @@ export interface Film {
   title: string;
   vote_average: number;
 }
+
+export type FilterFilms = Partial<{
+  language: string;
+  page: number;
+  // ISO-3166-1 code
+  region: string;
+}>;
+
+export type ResponseFilms<T> = {
+  films: T[];
+  currentPage: number;
+  totalPages: number;
+  hasMore: boolean;
+};
