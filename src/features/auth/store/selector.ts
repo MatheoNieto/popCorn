@@ -1,17 +1,18 @@
-import { createDraftSafeSelector, createSelector } from "@reduxjs/toolkit";
-import { RootState } from "@store/index";
+import {createDraftSafeSelector, createSelector} from '@reduxjs/toolkit';
+import {RootState} from '@store/index';
 const authSelector = (state: RootState) => state.auth;
 
-const getAuthData = createDraftSafeSelector(authSelector, (state) => ({
-  session_id: state.session_id,
-}));
+const getAuthData = createDraftSafeSelector(authSelector, state => state);
 
 export const getDataSessionSelector = createSelector(
   [getAuthData],
-  (authData) => authData.session_id,
+  authData => authData.sessionId,
 );
 
-export const isAuthenticatedSelector = createSelector(
+export const isAuthenticatedSelector = createSelector([getAuthData], authData =>
+  Boolean(authData.sessionId),
+);
+export const getAccountId = createSelector(
   [getAuthData],
-  (authData) => Boolean(authData.session_id),
+  authData => authData.accountDetails?.id,
 );
