@@ -8,7 +8,7 @@ const config = {
   initialRouteName: StackPublicDefinitions.FILM_STACK,
 };
 
-export const StackNavigatorPublic = () => {
+export const StackNavigatorPublicIn = () => {
   const routes = Object.entries(config.routes).map(([name, value]) => ({
     ...value,
     name,

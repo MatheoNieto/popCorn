@@ -1,5 +1,8 @@
+import {FilmRoutes} from '@features/films';
+import {useNavigation} from '@react-navigation/native';
 import {Film} from '@shared/entities/film';
-import {Box, Card} from '@shared/ui/components';
+import {StackPublicDefinitions} from '@shared/routes/public/types';
+import {BaseTouchable, Box, Card} from '@shared/ui/components';
 import React from 'react';
 import {Image} from 'react-native';
 
@@ -8,9 +11,21 @@ type Props = {
   image?: any;
 };
 
-const CardFilm: React.FC<Props> = ({image}) => {
+const CardFilm: React.FC<Props> = ({film, image}) => {
+  const navigation = useNavigation();
+
   return (
-    <Card variant="film">
+    <Card
+      variant="film"
+      as={BaseTouchable}
+      onPress={() =>
+        navigation.navigate(StackPublicDefinitions.PUBLIC_STACK, {
+          screen: FilmRoutes.FILM_DETAILS,
+          params: {
+            filmId: film.id,
+          },
+        })
+      }>
       <Box>
         <Image
           resizeMode="cover"

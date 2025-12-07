@@ -1,5 +1,5 @@
 import {StackBottomNavigatorPrivate} from './BottomTabNavigator/BottomTabNavigator';
-import {StackNavigatorPublic} from './PublicNavigator';
+import {StackNavigatorPublicIn} from './StackNavigator/StackNavigator';
 import {StackPublicDefinitions} from './types';
 
 export const routes = {
@@ -9,6 +9,6 @@ export const routes = {
   },
   [StackPublicDefinitions.PUBLIC_STACK]: {
     name: StackPublicDefinitions.PUBLIC_STACK,
-    component: StackNavigatorPublic,
+    component: StackNavigatorPublicIn,
   },
 };

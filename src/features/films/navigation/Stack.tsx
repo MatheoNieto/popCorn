@@ -13,8 +13,21 @@ const FilmsStack = () => {
         name={FilmRoutes.FILM_DETAILS}
         component={FilmDetailScreen}
         options={{
-          header: () => (
+          header: ({navigation}) => (
             <HeaderBox
+              leftIcon={
+                <IconButton
+                  onPress={() => navigation.goBack()}
+                  icon={
+                    <Icon
+                      type="FontAwesome5"
+                      name="chevron-left"
+                      size={24}
+                      color="white"
+                    />
+                  }
+                />
+              }
               rightIcon={
                 <IconButton
                   onPress={() => null}
