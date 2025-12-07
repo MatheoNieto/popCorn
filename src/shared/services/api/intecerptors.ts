@@ -1,13 +1,12 @@
-import { getDataSessionSelector } from "@features/auth/store/selector";
-import { useAppSelector } from "@shared/hooks/useStore";
-import { AxiosError, AxiosResponse } from "axios";
-import React from "react";
-import consumerApi from ".";
-import useEventCallback from "@shared/hooks/useEvenCallback";
-import { Alert } from "react-native";
+import {getSessionId} from '@features/auth/store/selector';
+import {useAppSelector} from '@shared/hooks/useStore';
+import {AxiosError, AxiosResponse} from 'axios';
+import React from 'react';
+import consumerApi from '.';
+import useEventCallback from '@shared/hooks/useEvenCallback';
 
 function useHttpInterceptor() {
-  const authorizationToken = useAppSelector(getDataSessionSelector);
+  const authorizationToken = useAppSelector(getSessionId);
 
   React.useEffect(() => {
     const consumerInterceptorErrorId = consumerApi.interceptors.response.use(
@@ -24,10 +23,10 @@ function useHttpInterceptor() {
     };
   }, []);
 
-  const interceptConsumerRequest = useEventCallback((request) => {
+  const interceptConsumerRequest = useEventCallback(request => {
     if (!authorizationToken) return request;
     const headers = request.headers as Record<string, string>;
-    headers["Authorization"] = `Bearer ${authorizationToken}`;
+    headers['Authorization'] = `Bearer ${authorizationToken}`;
     return request;
   });
 

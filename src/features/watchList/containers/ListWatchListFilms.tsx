@@ -39,10 +39,7 @@ const ListWatchListFilmsContainer = () => {
         onEndReached={() => hasMore && onLoadNextPage()}
         onEndReachedThreshold={0.5}
         ListEmptyComponent={
-          <EmptyList
-            title="we are sorry, we can not find the movie :("
-            message="Find your movie by Type title, categories, years, etc"
-          />
+          <EmptyList title="we are sorry, we can not find the movie :(" />
         }
         ListFooterComponent={() =>
           isFetchingNextPage ? <BaseSpinner /> : null

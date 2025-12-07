@@ -1,7 +1,5 @@
 import {endPoints} from '@shared/constants/endpoints';
 import consumerApi from '@shared/services/api';
-
-import {nowPlayingFilms} from '@features/home/services/mocks/nowPlayingFilms';
 import {FilterWatchList, ResponseWatchList} from '../entities/watchList';
 import {WatchListResponseApiDTO} from '../data/dto/response/watchListResponseDTO';
 import {Account} from '@shared/entities/account';
@@ -30,14 +28,6 @@ export const getWatchListService = async (
       totalPages: response.data.total_pages,
     });
   } catch (err) {
-    const filmsMapped = WatchListMapper.responseToEntity(
-      nowPlayingFilms.results,
-    );
-    return Promise.resolve({
-      films: filmsMapped,
-      hasMore: false,
-      currentPage: 1,
-      totalPages: 1,
-    });
+    return Promise.reject(err);
   }
 };
