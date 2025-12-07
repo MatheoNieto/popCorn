@@ -18,7 +18,11 @@ const ListNowPlayingContainer = () => {
   );
 
   if (isLoading) {
-    return <BaseSpinner />;
+    return (
+      <Box py="s" backgroundColor="error">
+        <BaseSpinner />
+      </Box>
+    );
   }
 
   return (

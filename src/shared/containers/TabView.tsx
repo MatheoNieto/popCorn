@@ -2,7 +2,6 @@ import {TabBar, TabItemProps, TabViewItem} from '@shared/components';
 import {TabRoute, useTabs} from '@shared/hooks/useTabs';
 import {Box} from '@shared/ui/components';
 import React from 'react';
-
 import {TabView} from 'react-native-tab-view';
 
 type TabViewContainerProps = {
@@ -16,17 +15,20 @@ const TabViewContainer: React.FC<TabViewContainerProps> & {
     const localRoutes: TabRoute[] = [];
     React.Children.forEach(children, child => {
       if (React.isValidElement(child) && child.type === TabViewItem) {
-        const {key, title, component} = child.props as TabItemProps;
-        localRoutes.push({key, title, component});
+        const childProps = child.props as TabItemProps;
+        localRoutes.push({
+          key: child.key || `${Math.random()}`,
+          title: childProps.title,
+          component: childProps.component,
+        });
       }
     });
     return localRoutes;
   }, [children]);
-
   const {index, routes, setIndex, renderScene} = useTabs(initialRoutes);
 
   return (
-    <Box backgroundColor="white" height={400}>
+    <Box backgroundColor="primary900" height={300}>
       <TabView
         navigationState={{index, routes}}
         renderScene={renderScene}

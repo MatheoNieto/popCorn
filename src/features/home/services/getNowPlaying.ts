@@ -3,6 +3,7 @@ import consumerApi from '@shared/services/api';
 import {NowPlayingResponseApiDTO} from '../data/dto/response/nowPlayingResponseDTO';
 import {FilterNowPlaying, ResponseNowPlaying} from '../entities/nowPlaying';
 import {NowPlayingMapper} from '../data/mappers/nowPlayingMapper';
+import {nowPlayingFilms} from './mocks/nowPlayingFilms';
 
 export const getNowPlayingService = async (
   filters: FilterNowPlaying,
@@ -26,6 +27,14 @@ export const getNowPlayingService = async (
       totalPages: response.data.total_pages,
     });
   } catch (err) {
-    return Promise.reject(err);
+    const filmsMapped = NowPlayingMapper.responseToEntity(
+      nowPlayingFilms.results,
+    );
+    return Promise.resolve({
+      films: filmsMapped,
+      hasMore: false,
+      currentPage: 1,
+      totalPages: 1,
+    });
   }
 };

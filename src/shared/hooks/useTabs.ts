@@ -10,8 +10,6 @@ export type TabRoute = {
 export const useTabs = (initialRoutes: TabRoute[]) => {
   const [index, setIndex] = React.useState(0);
 
-  console.log('======>initialRoutes', JSON.stringify(initialRoutes));
-
   const {routes, sceneMap} = React.useMemo(() => {
     const routes = initialRoutes.map(route => ({
       key: route.key,
