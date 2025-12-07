@@ -4,7 +4,7 @@ import {SceneMap} from 'react-native-tab-view';
 export type TabRoute = {
   key: string;
   title: string;
-  component: React.ComponentType<any>;
+  component: React.ComponentType;
 };
 
 export const useTabs = (initialRoutes: TabRoute[]) => {
@@ -18,12 +18,13 @@ export const useTabs = (initialRoutes: TabRoute[]) => {
       title: route.title,
     }));
 
-    const sceneMap = initialRoutes.reduce<
-      Record<string, React.ComponentType<any>>
-    >((acc, route) => {
-      acc[route.key] = route.component;
-      return acc;
-    }, {});
+    const sceneMap = initialRoutes.reduce<Record<string, React.ComponentType>>(
+      (acc, route) => {
+        acc[route.key] = route.component;
+        return acc;
+      },
+      {},
+    );
 
     return {routes, sceneMap};
   }, [initialRoutes]);

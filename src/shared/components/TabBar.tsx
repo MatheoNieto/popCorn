@@ -12,7 +12,7 @@ const TabBar: React.FC<Props> = props => {
   const inputRange = props.navigationState.routes.map((x, i) => i);
 
   return (
-    <Box>
+    <Box backgroundColor="error" height={80}>
       {props.navigationState.routes.map((route, i) => {
         const opacity = props.position.interpolate({
           inputRange,

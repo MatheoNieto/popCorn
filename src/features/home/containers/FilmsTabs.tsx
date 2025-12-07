@@ -10,17 +10,17 @@ const FilmsTabsContainer = () => {
     <Box backgroundColor="white">
       <TabViewContainer>
         <TabViewContainer.Item
-          key="now-playing-1"
+          key="now-playing"
           title="Now playing"
           component={ListNowPlayingContainer}
         />
         <TabViewContainer.Item
-          key="upcoming-2"
+          key="upcoming"
           title="Upcoming"
           component={ListUpComingContainer}
         />
         <TabViewContainer.Item
-          key="top-rated-3"
+          key="top-rated"
           title="Top rated"
           component={ListTopRatedContainer}
         />

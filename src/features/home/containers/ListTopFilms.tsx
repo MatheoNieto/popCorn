@@ -30,7 +30,6 @@ const ListTopFilmsContainer = () => {
           contentContainerStyle={{
             paddingVertical: 10,
             paddingLeft: 5,
-            height: '40%',
           }}
           horizontal
           data={listTopRated ?? []}
