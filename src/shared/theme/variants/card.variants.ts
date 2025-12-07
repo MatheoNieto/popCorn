@@ -6,10 +6,17 @@ const cardVariants = {
     backgroundColor: 'white',
     borderRadius: 's',
   },
-  topRated: {
+  film: {
     padding: 'unset',
     width: 145,
     height: 245,
+    borderRadius: 16,
+    marginVertical: 's',
+  },
+  topRated: {
+    padding: 'unset',
+    width: 100,
+    height: 145,
     borderRadius: 16,
     marginVertical: 's',
   },

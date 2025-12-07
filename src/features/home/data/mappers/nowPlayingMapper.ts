@@ -1,8 +1,10 @@
 import {Film} from '@features/home/entities/film';
-import {MoviesResponseApiDTO} from '../dto/response/topRatedFilmsResponseDTO';
+import {NowPlayingResponseApiDTO} from '../dto/response/nowPlayingResponseDTO';
 
-export class TopRatedMapper {
-  static responseToEntity(dataFilms: MoviesResponseApiDTO['results']): Film[] {
+export class NowPlayingMapper {
+  static responseToEntity(
+    dataFilms: NowPlayingResponseApiDTO['results'],
+  ): Film[] {
     return dataFilms.map(itemFilm => ({
       id: itemFilm.id,
       original_title: itemFilm.original_title,
@@ -13,7 +15,6 @@ export class TopRatedMapper {
       release_date: itemFilm.release_date,
       title: itemFilm.title,
       vote_average: itemFilm.vote_average,
-      adult: false,
     }));
   }
 }

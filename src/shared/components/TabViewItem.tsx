@@ -3,7 +3,7 @@ import React from 'react';
 
 export type Props = TabRoute;
 
-const TabViewItem: React.FC<Props> = () => {
+const TabViewItem: React.FC<Props> = ({key, component}) => {
   return null;
 };
 

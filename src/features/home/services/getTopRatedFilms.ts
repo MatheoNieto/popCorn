@@ -18,8 +18,6 @@ export const getTopRatedFilms = async (
       },
     );
 
-    console.log('==response=>', JSON.stringify(response.data));
-
     const dataFilmsMapped = TopRatedMapper.responseToEntity(
       response.data.results,
     );

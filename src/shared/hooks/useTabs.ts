@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {useState, useMemo} from 'react';
+import React from 'react';
 import {SceneMap} from 'react-native-tab-view';
 
 export type TabRoute = {
@@ -9,9 +8,11 @@ export type TabRoute = {
 };
 
 export const useTabs = (initialRoutes: TabRoute[]) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = React.useState(0);
 
-  const {routes, sceneMap} = useMemo(() => {
+  console.log('======>initialRoutes', JSON.stringify(initialRoutes));
+
+  const {routes, sceneMap} = React.useMemo(() => {
     const routes = initialRoutes.map(route => ({
       key: route.key,
       title: route.title,

@@ -14,8 +14,8 @@ const textVariants = {
   },
   numberTopRated: {
     position: 'absolute',
-    top: '70%',
-    right: '80%',
+    top: '50%',
+    right: '74%',
     fontSize: 96,
     fontFamily: CustomFonts.Secondary,
     fontWeight: 'bold',

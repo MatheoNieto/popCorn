@@ -10,17 +10,20 @@ type Props = {
 const TabViewContainer: React.FC<Props> & {
   Item: React.FC<TabItemProps>;
 } = ({children}) => {
-  const initialRoutesRef = React.useRef<TabRoute[]>([]);
-  const {index, routes, setIndex, renderScene} = useTabs(
-    initialRoutesRef.current,
-  );
+  const initialRoutes: TabRoute[] = React.useMemo(() => {
+    const collectedRoutes: TabRoute[] = [];
 
-  React.Children.forEach(children, child => {
-    if (React.isValidElement(child) && child.type === TabViewItem) {
-      const {key, title, component} = child.props as TabItemProps;
-      initialRoutesRef.current.push({key, title, component});
-    }
-  });
+    React.Children.forEach(children, child => {
+      if (React.isValidElement(child) && child.type === TabViewItem) {
+        const dataChild = child.props as TabItemProps;
+        collectedRoutes.push({...dataChild});
+      }
+    });
+
+    return collectedRoutes;
+  }, [children]);
+
+  const {index, routes, setIndex, renderScene} = useTabs(initialRoutes);
 
   return (
     <TabView

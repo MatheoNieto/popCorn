@@ -22,7 +22,9 @@ const TabBar: React.FC<Props> = props => {
         });
 
         return (
-          <BaseTouchable key={route.key} onPress={() => props.onIndexChange(i)}>
+          <BaseTouchable
+            key={`route.key-${Math.random()}`}
+            onPress={() => props.onIndexChange(i)}>
             <Animated.Text style={{opacity, color: 'white'}}>
               {route.title}
             </Animated.Text>
