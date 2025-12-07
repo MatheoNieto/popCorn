@@ -1,0 +1,37 @@
+import {TabBar, TabItemProps, TabViewItem} from '@shared/components';
+import {TabRoute, useTabs} from '@shared/hooks/useTabs';
+import React from 'react';
+import {TabView} from 'react-native-tab-view';
+
+type Props = {
+  children: React.ReactNode;
+};
+
+const TabViewContainer: React.FC<Props> & {
+  Item: React.FC<TabItemProps>;
+} = ({children}) => {
+  const initialRoutesRef = React.useRef<TabRoute[]>([]);
+  const {index, routes, setIndex, renderScene} = useTabs(
+    initialRoutesRef.current,
+  );
+
+  React.Children.forEach(children, child => {
+    if (React.isValidElement(child) && child.type === TabViewItem) {
+      const {key, title, component} = child.props as TabItemProps;
+      initialRoutesRef.current.push({key, title, component});
+    }
+  });
+
+  return (
+    <TabView
+      navigationState={{index, routes}}
+      renderScene={renderScene}
+      renderTabBar={props => <TabBar {...props} onIndexChange={setIndex} />}
+      onIndexChange={setIndex}
+    />
+  );
+};
+
+TabViewContainer.Item = TabViewItem;
+
+export default TabViewContainer;

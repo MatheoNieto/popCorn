@@ -27,6 +27,10 @@ const ListTopFilmsContainer = () => {
         </Box>
       ) : (
         <FlatList
+          contentContainerStyle={{
+            paddingVertical: 10,
+            paddingLeft: 5,
+          }}
           horizontal
           data={listTopRated ?? []}
           keyExtractor={item => `top-rated-card-film${item.id}`}

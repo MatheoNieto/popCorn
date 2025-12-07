@@ -15,14 +15,14 @@ const textVariants = {
   numberTopRated: {
     position: 'absolute',
     top: '70%',
-    left: 0,
-    fontSize: 90,
+    right: '80%',
+    fontSize: 96,
     fontFamily: CustomFonts.Secondary,
     fontWeight: 'bold',
     color: 'primary900',
     textShadowColor: 'borderNumberTopRated',
     textShadowRadius: 2,
-    textShadowOffset: {width: 1, height: 1},
+    textShadowOffset: {width: 0, height: 0},
   },
 };
 

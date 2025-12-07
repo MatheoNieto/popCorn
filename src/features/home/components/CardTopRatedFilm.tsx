@@ -19,7 +19,7 @@ const CardTopRatedFilm: React.FC<Props> = ({film, position}) => {
           style={{
             width: '100%',
             height: '100%',
-            borderRadius: 16,
+            borderRadius: 10,
           }}
         />
       </Box>

@@ -1,4 +1,4 @@
-import { Theme, useAppRestyle } from "@shared/theme";
+import {Theme, useAppRestyle} from '@shared/theme';
 import {
   backgroundColor,
   border,
@@ -10,7 +10,7 @@ import {
   opacity,
   spacing,
   typography,
-} from "@shopify/restyle";
+} from '@shopify/restyle';
 import type {
   BackgroundColorProps,
   BorderProps,
@@ -20,7 +20,7 @@ import type {
   SpacingProps,
   TypographyProps,
   VariantProps,
-} from "@shopify/restyle";
+} from '@shopify/restyle';
 
 import React, {
   ReactElement,
@@ -28,21 +28,21 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from "react";
+} from 'react';
 import {
   Pressable,
   StyleSheet,
   TextInput,
   TextInputProps,
   TextStyle,
-} from "react-native";
-import { forwardRef } from "../utils";
-import useAsProp from "../hooks/useAsProp";
-import { useCombinedRefs } from "@shared/hooks/useCombinedRefs";
-import useFontStyle from "../hooks/useFontStyle";
-import Box from "./Box";
+} from 'react-native';
+import {forwardRef} from '../utils';
+import useAsProp from '../hooks/useAsProp';
+import {useCombinedRefs} from '@shared/hooks/useCombinedRefs';
+import useFontStyle from '../hooks/useFontStyle';
+import Box from './Box';
 
-export type RestyleInputProps = VariantProps<Theme, "inputVariants"> &
+export type RestyleInputProps = VariantProps<Theme, 'inputVariants'> &
   TypographyProps<Theme> &
   ColorProps<Theme> &
   BackgroundColorProps<Theme> &
@@ -57,12 +57,12 @@ export type RestyleInputProps = VariantProps<Theme, "inputVariants"> &
     name?: string;
     onChangeValue?: (() => Promise<any> | void) | Function | null;
     autoCompleteType?:
-      | "password"
-      | "email"
-      | "street-address"
-      | "name"
-      | "cc-csc"
-      | "tel";
+      | 'password'
+      | 'email'
+      | 'street-address'
+      | 'name'
+      | 'cc-csc'
+      | 'tel';
     label?: string | null;
     styleContent?: TextStyle;
     isRequired?: boolean;
@@ -70,14 +70,14 @@ export type RestyleInputProps = VariantProps<Theme, "inputVariants"> &
 
 export type InputProps = RestyleInputProps;
 
-const variant = createVariant({ themeKey: "inputVariants" });
+const variant = createVariant({themeKey: 'inputVariants'});
 const inputPlaceholderTextColor = createRestyleFunction({
-  themeKey: "colors",
-  property: "placeholderTextColor",
+  themeKey: 'colors',
+  property: 'placeholderTextColor',
 });
 const inputSelectionColor = createRestyleFunction({
-  themeKey: "colors",
-  property: "selectionColor",
+  themeKey: 'colors',
+  property: 'selectionColor',
 });
 
 const restyleFunctions = composeRestyleFunctions([
@@ -122,18 +122,18 @@ const Input = forwardRef<InputProps, typeof TextInput>(
     const refs = useCombinedRefs(internalRef, ref);
 
     let _inputVariant = useMemo(() => {
-      if (isFocused) return "focused";
-      if (isDisabled) return "disabled";
-      if (isInvalid) return "error";
+      if (isFocused) return 'focused';
+      if (isDisabled) return 'disabled';
+      if (isInvalid) return 'error';
       return inputVariant;
     }, [isFocused, isDisabled, isInvalid, inputVariant]);
 
     const {
-      style: [{ selectionColor, ...containerStyle }],
+      style: [{selectionColor, ...containerStyle}],
       ...props
     } = useAppRestyle<
       InputProps,
-      Pick<TextInputProps, "placeholderTextColor" | "selectionColor">
+      Pick<TextInputProps, 'placeholderTextColor' | 'selectionColor'>
     >(restyleFunctions, {
       variant: _inputVariant,
       ...rest,
@@ -169,18 +169,16 @@ const Input = forwardRef<InputProps, typeof TextInput>(
         <Pressable
           style={StyleSheet.flatten([style, containerStyle])}
           onPress={handleExternalFocus}
-          accessible={false}
-        >
+          accessible={false}>
           <Box flexDirection="row" alignItems="center" justifyContent="center">
             <Box flex={1}>
               <BaseInputComponent
                 ref={refs}
-                style={[fontStyle, styleContent, { color: "white" }]}
+                style={[fontStyle, styleContent, {color: 'white'}]}
                 selectionColor={selectionColor}
                 editable={!isDisabled}
                 {...props}
                 value={value}
-                placeholder={placeholder}
                 onBlur={handleBlur}
                 onFocus={handleFocus}
               />
