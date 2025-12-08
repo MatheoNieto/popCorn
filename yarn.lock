@@ -2548,6 +2548,11 @@ expo-status-bar@~3.0.8:
   dependencies:
     react-native-is-edge-to-edge "^1.2.1"
 
+expo-video@~3.0.15:
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/expo-video/-/expo-video-3.0.15.tgz#38921dab5bc877572b64728acb58097716239aa7"
+  integrity sha512-KmxHVCtOBb1fnxXL6DpgLbEe7Qlv/vHNGTLfz0u/eY8fBC9s5cncD2BhPunEffrGvNMftBzYMYDaO86x+IYpnA==
+
 expo@~54.0.26:
   version "54.0.26"
   resolved "https://registry.yarnpkg.com/expo/-/expo-54.0.26.tgz#4cefa8425febf607185a5c4aaec5923530e67ba8"
