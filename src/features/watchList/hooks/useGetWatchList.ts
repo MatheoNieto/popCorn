@@ -1,10 +1,13 @@
 import {useInfiniteQuery} from '@tanstack/react-query';
 import {FilterWatchList} from '../entities/watchList';
 import {getWatchListService} from '../services/getWatchList';
-import {useAppSelector} from '@shared/hooks/useStore';
+import {useAppDispatch, useAppSelector} from '@shared/hooks/useStore';
 import {getAccountId} from '@features/auth/store/selector';
+import React from 'react';
+import {watchListActions} from '../store';
 
 export const useGetWatchList = (filters: FilterWatchList) => {
+  const dispatch = useAppDispatch();
   const accountId = useAppSelector(getAccountId);
 
   const query = useInfiniteQuery({
@@ -25,6 +28,14 @@ export const useGetWatchList = (filters: FilterWatchList) => {
   });
 
   const films = query.data?.pages.flatMap(page => page.films) ?? [];
+
+  React.useEffect(() => {
+    dispatch(
+      watchListActions.saveFilms({
+        dataFilms: films,
+      }),
+    );
+  }, [films]);
 
   return {
     isLoading: query.isLoading,

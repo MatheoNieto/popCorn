@@ -1,17 +1,24 @@
-import { createMigrate, PersistConfig } from "redux-persist";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import {createMigrate, PersistConfig} from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const migrate = createMigrate({ 3: () => undefined, 4: () => undefined });
+const migrate = createMigrate({3: () => undefined, 4: () => undefined});
 
 export const persistConfigAuth: PersistConfig<any> = {
-  key: "auth",
+  key: 'auth',
   storage: AsyncStorage,
   version: 4.03,
   migrate,
 };
 
 export const persistConfigRoot: PersistConfig<any> = {
-  key: "root",
+  key: 'root',
+  storage: AsyncStorage,
+  version: 4.02,
+  migrate,
+};
+
+export const persistConfigWatchList: PersistConfig<any> = {
+  key: 'watchList',
   storage: AsyncStorage,
   version: 4.02,
   migrate,
