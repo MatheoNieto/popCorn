@@ -49,7 +49,9 @@ const theme = createTheme({
   breakpoints: {
     phone: 0,
   },
-  zIndices: {},
+  zIndices: {
+    z100: 100,
+  },
   textVariants: textVariants,
   cardVariants: cardVariants,
   inputVariants: inputVariants,

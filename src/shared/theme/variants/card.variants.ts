@@ -3,8 +3,8 @@ const cardVariants = {
     padding: 'm',
     marginBottom: 'm',
     marginHorizontal: 'm',
-    backgroundColor: 'white',
     borderRadius: 's',
+    backgroundColor: 'primary900',
   },
   film: {
     padding: 'unset',
@@ -19,6 +19,11 @@ const cardVariants = {
     height: 145,
     borderRadius: 16,
     marginVertical: 's',
+  },
+  headerFilmDetail: {
+    paddingHorizontal: 'unset',
+    paddingVertical: 'm',
+    marginBottom: 'unset',
   },
 };
 

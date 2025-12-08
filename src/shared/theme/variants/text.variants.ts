@@ -1,4 +1,3 @@
-import {color} from '@shopify/restyle';
 import {CustomFonts} from '../constants';
 
 const textVariants = {
@@ -38,6 +37,17 @@ const textVariants = {
     fontWeight: 500,
     textAlign: 'center',
     color: 'primary',
+  },
+  titleFilmDetail: {
+    fontFamily: CustomFonts.Primary,
+    fontWeight: 600,
+    fontSize: 18,
+  },
+  labelInfoFilms: {
+    fontFamily: CustomFonts.Secondary,
+    fontWeight: 500,
+    color: 'primary',
+    marginHorizontal: 'xs',
   },
 };
 
