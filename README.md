@@ -1,3 +1,20 @@
+# Answer the Following Questions
+
+### What does the single responsibility principle consist of? What's its purpose?
+
+It means a class or function should have only one job. Its purpose is to make code easier to understand, test, and maintain.-
+
+### What characteristics does “good” or clean code have?
+
+Simple and easy to read, Well-organized, Consistent naming,No duplicated logic, Easy to test and maintain, Clear responsibilities
+
+### Detail how you would do everything that you have not completed.
+
+I have an error with the API at the moment to create an session Id, I got this error
+![Alt text](./docs/responsePostmanSessionGuest.png)
+
+I couldn't test correctly however I created mocks to help me.
+
 # Pop Corn
 
 # Architecture
