@@ -9,14 +9,10 @@ import {images} from '@assets/images';
 import {useGetWatchList} from '../hooks/useGetWatchList';
 import {useAppSelector} from '@shared/hooks/useStore';
 import {getSessionId} from '@features/auth/store/selector';
-import {useIsConnected} from '@shared/hooks/useIsConnected';
-import {getFilmsWatchList} from '../store/selectors';
 
 const ListWatchListFilmsContainer = () => {
-  const isConnected = useIsConnected();
-
   const sessionId = useAppSelector(getSessionId);
-  const filmsWatchListStore = useAppSelector(getFilmsWatchList);
+
   const {films, hasMore, isFetchingNextPage, onLoadNextPage} = useGetWatchList({
     session_id: sessionId,
   });
@@ -37,7 +33,7 @@ const ListWatchListFilmsContainer = () => {
           paddingLeft: 5,
           paddingBottom: 130,
         }}
-        data={isConnected ? films : filmsWatchListStore}
+        data={films}
         keyExtractor={item => `card-searching-film${item.id}`}
         renderItem={renderItems}
         numColumns={3}
